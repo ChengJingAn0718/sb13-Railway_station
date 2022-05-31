@@ -127,6 +127,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
             audioList.bodyAudio1.src = getAudioPath('intro/3');
             audioList.bodyAudio2.src = getAudioPath('intro/2');
 
+
             blackWhiteObject.current.style.WebkitMaskImage = 'url("' +
                 returnImgPath(maskPathList[currentMaskNum][0], true) + '")'
 
@@ -238,6 +239,10 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
                 setTimeout(() => {
                     if (currentMaskNum < audioPathList.length - 1) {
                         audioList.bodyAudio1.src = getAudioPath('intro/' + audioPathList[currentMaskNum + 1][0]);
+                        if (currentMaskNum == 9)
+                            setExtraVolume(audioList.bodyAudio1, 0.3)
+                        else
+                            setExtraVolume(audioList.bodyAudio1, 1)
                         if (audioPathList[currentMaskNum + 1].length > 1)
                             audioList.bodyAudio3.src = getAudioPath('intro/' + audioPathList[currentMaskNum + 1][1]);
                     }
