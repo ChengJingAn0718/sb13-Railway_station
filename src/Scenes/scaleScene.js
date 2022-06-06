@@ -78,7 +78,6 @@ const audioPathList = [
 
 
 const subMarkInfoList = [
-
     [
         { p: '3', t: 2000, ps: 2, pl: 0.4, pt: -0.4 },
         { p: '4', t: 3600, ps: 2, pl: 0.3, pt: -1 },
