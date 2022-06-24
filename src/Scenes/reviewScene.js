@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext, useState } from 'react';
 import "../stylesheets/styles.css";
 import BaseImage from '../components/BaseImage';
 import { UserContext } from '../components/BaseShot';
-import { prePathUrl, getAudioPath, setRepeatType, setRepeatAudio, startRepeatAudio, stopRepeatAudio } from "../components/CommonFunctions";
+import { prePathUrl, getAudioPath, setRepeatType, setRepeatAudio, startRepeatAudio, stopRepeatAudio, setExtraVolume } from "../components/CommonFunctions";
 import { textInfoList, iconList, gapList } from "../components/CommonVarariant"
 
 
@@ -74,15 +74,16 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
             setSceneLoad(true)
         },
         sceneStart: () => {
-            baseObject.current.className = 'aniObject'
 
+            setExtraVolume(audioList.commonAudio3, 6)
+
+            baseObject.current.className = 'aniObject'
 
             timerList[0] = setTimeout(activeBtnFunc, 1500);
 
             setRepeatType(2)
 
             audioList.bodyAudio1.src = prePathUrl() + "sounds/main/common/review0.mp3"
-            audioList.bodyAudio2.src = prePathUrl() + "sounds/main/common/review1.mp3"
 
             imageCount = 0;
             isEffectPassed = true;
@@ -190,7 +191,12 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
 
         clickedList.push(index)
 
-        audioList[index].play();
+        setExtraVolume(audioList[index], 6)
+        
+        setTimeout(() => {
+            audioList[index].play();
+        }, 50);
+
         if (clickedList.length == doneCount + wordGround[stepCount]) {
             setTimeout(() => {
                 if (stepCount != wordGround.length - 1)
