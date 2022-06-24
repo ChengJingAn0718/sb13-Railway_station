@@ -30,6 +30,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc }, ref) => {
             setExtraVolume(audioList.buzzAudio, 2.5)
             setExtraVolume(audioList.successAudio, 2.5)
 
+            setExtraVolume(audioList.bodyAudio1, 6)
             audioList.bodyAudio1.src = getAudioPath('common/middle')
 
             parentRef.current.className = 'aniObject'

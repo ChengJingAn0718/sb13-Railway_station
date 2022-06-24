@@ -231,6 +231,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
                 }
 
 
+                if (currentMaskNum > 0)
+                    setExtraVolume(audioList.bodyAudio1, 10)
                 audioList.bodyAudio1.play().catch(error => { });
                 if (isSubAudio)
                     setTimeout(() => {
