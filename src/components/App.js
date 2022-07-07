@@ -38,10 +38,21 @@ const App = React.forwardRef(({ geo, _startTransition, baseGeo, bgLoaded }, ref)
       sceneList[0].current.sceneLoad()
 
 
+      
       return () => {
       }
     }, []
   )
+
+  
+  function startFunc(num) {
+    bgLoaded()
+
+    sceneList[num].current.sceneLoad()
+    setTimeout(() => {
+      sceneList[num].current.sceneStart()
+    }, 500);
+  }
 
 
   function nextFunc() {
